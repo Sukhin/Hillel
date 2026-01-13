@@ -1,0 +1,102 @@
+### IntelliJ IDEA ###
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.kotlin
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
+logs/
+log/
+
+# Временные файлы
+*.tmp
+*.temp
+*.swp
+*.bak
+
+# Кэши
+.cache/
+.cache/*
+__pycache__/
+*.pyc
+
+# Переменные окружения и секреты
+.env
+.env.*
+*.key
+*.pem
+secrets/
+config.local.*
+
+# Зависимости
+node_modules/
+vendor/
+
+# Сборка / билд
+dist/
+build/
+out/
+target/
+
+# IDE / редакторы
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+*.sublime-project
+
+# Архивы
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Базы данных
+*.sqlite
+*.sqlite3
+*.db
+
+# Отчёты и дампы
+*.dump
+*.sql
+
+# Coverage / тесты
+coverage/
+.nyc_output/
+
+# Docker
+docker-compose.override.yml
+
+# Локальные настройки
+*.local
