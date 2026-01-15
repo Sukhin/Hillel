@@ -3,54 +3,79 @@ package app;
 import java.util.Scanner;
 import java.util.Locale;
 
-public class Main {
+        public class Main {
 
-    static int totalNumberProducts;
-    static String nameProduct;
-    static int numberProductCertainTypeCertainPeriod;
-    static float costProductCertainType;
-    static  byte salesPeriod;
-    static float totalSalesCertainPeriod;
-    static float averageDailySalesVolume;
+        static int numberEnterprises;
+        static String nameEnterprises;
+        static float volumeIncome;
+        static float amountTaxation;
 
-    public static void main(String[] args) {
-        Scanner dataEntry = new Scanner(System.in);
-        dataEntry.useLocale(Locale.GERMANY);
-        System.out.println("Hello!");
-        System.out.println("Welcome to the program for calculating the finances of an online store!");
-        System.out.print("Enter the total number of products: ");
-        totalNumberProducts=dataEntry.nextInt();
-        dataEntry.nextLine();
+            public static void main (String [] args) {
 
-        int first_Value=1;
+            System.out.println("Hello! Welcome to the program for calculating income taxes on a progressive scale!");
+            Scanner enter = new Scanner (System.in);
+            enter.useLocale(Locale.GERMANY);
+            System.out.print("Enter the total number of enterprises for which taxation will be calculated: ");
+            numberEnterprises=enter.nextInt();
+            enter.nextLine();
 
-        while (first_Value<=totalNumberProducts) {
+            int count = 1;
 
-            System.out.print("Enter name product: ");
-            nameProduct=dataEntry.nextLine();
-            System.out.print("Enter the number of products of a certain type sold for a certain period: ");
-            numberProductCertainTypeCertainPeriod=dataEntry.nextInt();
-            System.out.print("Enter the cost of the product: ");
-            costProductCertainType=dataEntry.nextFloat();
-            System.out.print("Enter the sales period: ");
-            salesPeriod=dataEntry.nextByte();
-            totalSalesCertainPeriod=numberProductCertainTypeCertainPeriod*costProductCertainType;
-            dataEntry.nextLine();
+                while (count<=numberEnterprises) {
 
-            if(salesPeriod>0) {
+                System.out.print("\n");
+                System.out.print("Enter the name of enterprise: ");
+                nameEnterprises=enter.nextLine();
+                System.out.print("Enter the company's revenue level UAH: ");
+                volumeIncome=enter.nextFloat();
+                enter.nextLine();
 
-                averageDailySalesVolume=totalSalesCertainPeriod/salesPeriod;
+
+                    if (0<volumeIncome&&volumeIncome<=10000) {
+
+                        final float taxRate=2.5f;
+                        amountTaxation=volumeIncome/100*taxRate;
+
+                    }
+
+                    else if (10000<=volumeIncome&&volumeIncome<=25000) {
+
+                        final float taxRate; taxRate=4.3f;
+                        amountTaxation=volumeIncome/100*taxRate;
+
+                    }
+
+                    else if (volumeIncome>=25000) {
+
+                        final float taxRate;  taxRate=6.7f;
+                        amountTaxation=volumeIncome/100*taxRate;
+
+                    }
+
+                    else {
+
+                        System.out.print("\n");
+                        System.out.println("The amount of income is zero!");
+
+                    }
+
+                    if (0<volumeIncome) {
+
+                        System.out.print("\n");
+                        System.out.println("Enterprise № " + count + ".");
+                        System.out.println("Name of the enterprise " + nameEnterprises + ".");
+                        System.out.printf("Volume of the income of an enterprise: %.2f UAH.%n", volumeIncome);
+                        System.out.printf("Level of the taxation of an enterprise: %.2f UAH.%n", amountTaxation);
+
+                    }
+
+                count += 1;
+
+                }
+
+            System.out.print("\n");
+            System.out.print("Always happy to help!");
+
             }
-            else {
-                System.out.println("Can't divide by zero!");
-                continue;
-            }
-            System.out.println("Product No"+" "+first_Value+":"+" "+nameProduct+",");
-            System.out.printf("total sales for %d days is EUR %.2f,\n", salesPeriod,totalSalesCertainPeriod);
-            System.out.printf("sales by day is EUR %.2f.\n", averageDailySalesVolume);
 
-            first_Value+=1;
         }
-        System.out.println("Always happy to help!");
-    }
-}
