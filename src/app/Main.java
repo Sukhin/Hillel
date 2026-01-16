@@ -1,81 +1,37 @@
 package app;
 
 import java.util.Scanner;
-import java.util.Locale;
 
         public class Main {
-
-        static int numberEnterprises;
-        static String nameEnterprises;
-        static float volumeIncome;
-        static float amountTaxation;
+        static int maximumValueRange;
+        static int sum;
+        static int totalSum;
 
             public static void main (String [] args) {
-
-            System.out.println("Hello! Welcome to the program for calculating income taxes on a progressive scale!");
+            System.out.println("Hello! Welcome in the program for calculating sum of the whole numbers!");
+            System.out.print("Enter the maximum value of a range of integers to calculate their sum, starting from one: ");
             Scanner enter = new Scanner (System.in);
-            enter.useLocale(Locale.GERMANY);
-            System.out.print("Enter the total number of enterprises for which taxation will be calculated: ");
-            numberEnterprises=enter.nextInt();
+            maximumValueRange = enter.nextInt();
             enter.nextLine();
-
-            int count = 1;
-
-                while (count<=numberEnterprises) {
-
-                System.out.print("\n");
-                System.out.print("Enter the name of enterprise: ");
-                nameEnterprises=enter.nextLine();
-                System.out.print("Enter the company's revenue level UAH: ");
-                volumeIncome=enter.nextFloat();
-                enter.nextLine();
-
-
-                    if (0<volumeIncome&&volumeIncome<=10000) {
-
-                        final float taxRate=2.5f;
-                        amountTaxation=volumeIncome/100*taxRate;
-
-                    }
-
-                    else if (10000<=volumeIncome&&volumeIncome<=25000) {
-
-                        final float taxRate; taxRate=4.3f;
-                        amountTaxation=volumeIncome/100*taxRate;
-
-                    }
-
-                    else if (volumeIncome>=25000) {
-
-                        final float taxRate;  taxRate=6.7f;
-                        amountTaxation=volumeIncome/100*taxRate;
-
-                    }
-
-                    else {
-
-                        System.out.print("\n");
-                        System.out.println("The amount of income is zero!");
-
-                    }
-
-                    if (0<volumeIncome) {
-
-                        System.out.print("\n");
-                        System.out.println("Enterprise № " + count + ".");
-                        System.out.println("Name of the enterprise " + nameEnterprises + ".");
-                        System.out.printf("Volume of the income of an enterprise: %.2f UAH.%n", volumeIncome);
-                        System.out.printf("Level of the taxation of an enterprise: %.2f UAH.%n", amountTaxation);
-
-                    }
-
-                count += 1;
-
-                }
-
             System.out.print("\n");
-            System.out.print("Always happy to help!");
+
+            int initialValue = 0;
+
+                for (int initialValueRange=1; initialValueRange<=maximumValueRange; initialValueRange++) {
+                sum = initialValueRange+initialValue;
+                initialValue=sum;
+                System.out.println(initialValueRange+")"+" Num is"+" "+initialValueRange+","+" sum is"+" "+ sum);
+
+                    if (initialValueRange==maximumValueRange) {
+                    totalSum=sum;
+                     }
+
+                 }
+
+                System.out.println("Sum of numbers is "+totalSum);
+                System.out.println("-".repeat(24));
+                System.out.print("\n");
+                System.out.print("Always happy to help!");
 
             }
-
         }
