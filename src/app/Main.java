@@ -1,60 +1,49 @@
 package app;
 
-import part1_app.ArrayCalculations1;
-import part2_app.ArrayCalculation2;
-import part3_app.ArrayCalculation3;
-import part4_app.ArrayCalculation4;
-import part5_app.ArrayCalculation5;
-import part6_app.ArrayCalculation6;
-
+import part1_app.InitialLookArray;
+import part2_app.ArraySort1;
+import part3_app.ArraySort2;
 import java.util.Scanner;
 
 public class Main {
 
     static int numberElementsArray;
-    static int sumNegativeValue;
-    static int numberPairedValue;
-    static int numberUnpairedValue;
-    static int maxValueArray;
-    static int minValueArray;
-    static int indexMin;
-    static int indexMax;
-    static float averageValueElementsArrayAboutNegative;
+    static int[] elementsArray;
+    static String line;
+    static String[] parts;
+    static int valueSearch;
+    static int indexValueSearch;
+
 
     public static void main(String[] args) {
 
-        System.out.println("Hello! Welcome in the program for working with arrays!");
-        Scanner enter = new Scanner(System.in);
-        System.out.println("-".repeat(54));
+        System.out.println("Hello! Welcome to the program for processing arrays with various algorithms!");
+        System.out.println("-".repeat(75));
         System.out.print("\n");
+        Scanner enter = new Scanner(System.in);
         System.out.print("Enter the number array of elements: ");
         numberElementsArray = enter.nextInt();
-        int[] array = new int[numberElementsArray];
-        System.out.println("Enter the values array of elements: ");
+        enter.nextLine();
+        elementsArray = new int[numberElementsArray];
+        System.out.print("Enter the values array of elements: ");
+        line = enter.nextLine();
+        line = line.replace("[", "").replace("]", "");
+        parts = line.split("[,.\\s]+");
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < elementsArray.length; i++) {
 
-            array[i] = enter.nextInt();
+            elementsArray[i] = Integer.parseInt(parts[i]);
 
         }
 
-        sumNegativeValue = ArrayCalculations1.findSumNegativeElementsArray(array);
-        numberPairedValue = ArrayCalculation2.findNumberPairedElementsArray(array);
-        numberUnpairedValue = ArrayCalculation3.findNumberUnpairedElementsArray(array);
-        minValueArray = ArrayCalculation4.findMinimumElementArray(array);
-        maxValueArray = ArrayCalculation5.findMaximumElementArray(array);
-        indexMin = ArrayCalculation4.findIndexMinimumElementArray(array);
-        indexMax = ArrayCalculation5.findIndexMaximumElementArray(array);
-        averageValueElementsArrayAboutNegative = ArrayCalculation6.findAverageValueArray(array);
-
-        System.out.println("The sum of negative numbers: "+sumNegativeValue);
-        System.out.println("The numbers of even values: "+numberPairedValue);
-        System.out.println("The numbers of odd values: "+numberUnpairedValue);
-        System.out.println("The minimum value of the array: "+minValueArray);
-        System.out.println("The maximum value of the array: "+maxValueArray);
-        System.out.println("The index of the maximum value in the array: "+indexMin);
-        System.out.println("The index of the minimum value in the array: "+indexMax);
-        System.out.printf("The arithmetic mean of the elements of the array starting after the first negative value: %.2f ",averageValueElementsArrayAboutNegative);
+        System.out.print("Initial look the array: ");
+        InitialLookArray.printElementsArray(elementsArray);
+        System.out.print("Sorted array: ");
+        InitialLookArray.printElementsArray(ArraySort1.insertionSort(elementsArray));
+        System.out.print("Enter the number for to search in the array: ");
+        valueSearch = enter.nextInt();
+        indexValueSearch = ArraySort2.findIndexElementArray(ArraySort1.insertionSort(elementsArray), valueSearch);
+        System.out.print("Index of the value " + valueSearch + " in the sorted array: " + indexValueSearch);
         System.out.println("\n");
         System.out.println("-".repeat(21));
         System.out.println("Always happy to help!");
