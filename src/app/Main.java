@@ -2,80 +2,88 @@ package app;
 
 import java.util.Scanner;
 
-import part1_app.InitialLookTwoDimensionalArray;
-import part2_app.TwoDimensionalArrayOperations1;
-import part3_app.TwoDimensionalArrayOperations2;
-import part4_app.TwoDimensionalArrayOperations3;
-import part5_app.TwoDimensionalArrayOperations4;
-import part6_app.TwoDimensionalArrayOperations5;
+import part1_app.WorkWithMethodsPart_1;
+import part2_app.WorkWithMethodsPart_2;
+import part3_app.WorkWithMethodsPart_3;
+import part4_app.WorkWithMethodsPart_4;
+import part5_app.WorkWithMethodsPart_5;
+import part6_app.WorkWithMethodsPart_6;
+
+import java.util.Locale;
 
 public class Main {
 
-    static int numberRowsTwoDimensionalArray;
-    static int numberColumnsTwoDimensionalArray;
-    static int[][] elementsTwoDimensionalArray;
-    static int sumElementsEvenRowsTwoDimensionalArray;
-    static int sumElementsOddRowsTwoDimensionalArray;
-    static int productElementsEvenColumnsTwoDimensionalArray;
-    static int productElementsOddColumnsTwoDimensionalArray;
+    static int wholeNumber;
+    static double radiusCylinder;
+    static double highCylinder;
+    static double volumeCylinder;
+    static String line;
+    static String freeLine;
+    static String[] valueLine;
+    static int sumElementsArray;
+    static int[] array;
+    static String textEnter;
+    static String reversText;
+    static int a;
+    static int b;
+    static double numberPower;
+    static int n;
+    static String textLine;
 
     public static void main(String[] args) {
 
-        System.out.println("Hello! Welcome to the program for processing two-dimensional arrays!");
-        System.out.println("-".repeat(68));
+        System.out.println("Hello! Welcome to the program for working with the methods!");
+        System.out.println("-".repeat(59));
         System.out.print("\n");
         Scanner enter = new Scanner(System.in);
-        System.out.print("Enter the number of rows in the two-dimensional array: ");
-        numberRowsTwoDimensionalArray = enter.nextInt();
+        enter.useLocale(Locale.US);
+        System.out.print("1. Enter a whole number: ");
+        wholeNumber = enter.nextInt();
         enter.nextLine();
-        System.out.print("Enter the number of columns in the two-dimensional array: ");
-        numberColumnsTwoDimensionalArray = enter.nextInt();
+        WorkWithMethodsPart_1.calculationNumberSquare(wholeNumber);
+        System.out.print("2. Enter the radius of the cylinder: ");
+        radiusCylinder = enter.nextDouble();
         enter.nextLine();
+        System.out.print("   Enter the high of the cylinder: ");
+        highCylinder = enter.nextDouble();
+        enter.nextLine();
+        volumeCylinder = WorkWithMethodsPart_2.calculationVolumeCylinder(radiusCylinder, highCylinder);
         System.out.print("\n");
-        elementsTwoDimensionalArray = new int[numberRowsTwoDimensionalArray][numberColumnsTwoDimensionalArray];
-        System.out.println("Enter the values of the elements of the two-dimensional array!");
-        System.out.print("\n");
+        System.out.print("3. Array of numbers: ");
+        line = enter.nextLine();
+        freeLine = line.replace("[", "").replace(",", "").replace("]", "");
+        valueLine = freeLine.split("\\s+");
+        array = new int[valueLine.length];
 
-        for (int i = 0; i < elementsTwoDimensionalArray.length; i++) {
+        for (int i = 0; i < valueLine.length; i++) {
 
-            for (int j = 0; j < elementsTwoDimensionalArray[i].length; j++) {
-
-                System.out.print("Enter the value of the element with index " + (i + 1) + (j + 1) + " of the two-dimensional array: ");
-                elementsTwoDimensionalArray[i][j] = enter.nextInt();
-
-            }
+            array[i] = Integer.parseInt(valueLine[i]);
 
         }
 
+        sumElementsArray = WorkWithMethodsPart_3.sumElementsArray(array);
+        System.out.println("   The sum of all elements in the array is " + sumElementsArray + ".");
         System.out.print("\n");
-        System.out.println("Initial look of two-dimensional the array!");
+        System.out.print("4. Enter the string with text: ");
+        textEnter = enter.nextLine();
+        reversText = WorkWithMethodsPart_4.printReversText(textEnter);
+        System.out.println("   The string in revers direction: " + reversText);
         System.out.print("\n");
-        InitialLookTwoDimensionalArray.printElementsTwoDimensionalArray(elementsTwoDimensionalArray, numberRowsTwoDimensionalArray, numberColumnsTwoDimensionalArray);
+        System.out.print("5. Enter a: ");
+        a = enter.nextInt();
+        enter.nextLine();
+        System.out.print("   Enter b: ");
+        b = enter.nextInt();
+        enter.nextLine();
+        numberPower = WorkWithMethodsPart_5.numberRaisePower(a, b);
+        System.out.println("   The result of " + a + "^" + b + " is " + numberPower + ".");
         System.out.println("\n");
-        sumElementsEvenRowsTwoDimensionalArray = TwoDimensionalArrayOperations1.sumElementsEvenRowsTwoDimensionalArray(elementsTwoDimensionalArray);
-        System.out.println("Sum the elements in the even-numbered rows (row ) of the two-dimensional array: " + sumElementsEvenRowsTwoDimensionalArray);
-        System.out.println("\n");
-        sumElementsOddRowsTwoDimensionalArray = TwoDimensionalArrayOperations2.sumElementsOddRowsTwoDimensionalArray(elementsTwoDimensionalArray);
-        System.out.println("Sum the elements in the odd rows (row ) of the two-dimensional array: " + sumElementsOddRowsTwoDimensionalArray);
-        System.out.println("\n");
-        productElementsEvenColumnsTwoDimensionalArray = TwoDimensionalArrayOperations3.productElementsEvenColumnsTwoDimensionalArray(elementsTwoDimensionalArray);
-        System.out.println("Product the elements in the even-numbered columns of the two-dimensional array: " + productElementsEvenColumnsTwoDimensionalArray);
-        System.out.println("\n");
-        productElementsOddColumnsTwoDimensionalArray = TwoDimensionalArrayOperations4.productElementsOddColumnsTwoDimensionalArray(elementsTwoDimensionalArray);
-        System.out.println("Product the elements in the odd columns of the two-dimensional array: " + productElementsOddColumnsTwoDimensionalArray);
-
-        System.out.println("\n");
-
-        if (numberRowsTwoDimensionalArray == numberColumnsTwoDimensionalArray) {
-
-            TwoDimensionalArrayOperations5.FunctionCheckMatrixMagicSquare(elementsTwoDimensionalArray, numberRowsTwoDimensionalArray, numberColumnsTwoDimensionalArray);
-
-        } else {
-
-            System.out.print("The matrix is not a square!");
-
-        }
-
+        System.out.print("6. Enter a whole number n: ");
+        n = enter.nextInt();
+        enter.nextLine();
+        System.out.print("   Enter a text string: ");
+        textLine = enter.nextLine();
+        WorkWithMethodsPart_6.printText(n, textLine);
         System.out.println("\n");
         System.out.println("-".repeat(21));
         System.out.println("Always happy to help!");
