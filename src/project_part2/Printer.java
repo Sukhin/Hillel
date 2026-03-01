@@ -1,8 +1,9 @@
-package project_part5;
+package project_part2;
+
+import project_part1.Person;
 
 public interface Printer {
 
-    void print(String massage);
+    void print(Person.Message message);
 
 }
-

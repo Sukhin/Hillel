@@ -1,4 +1,9 @@
-package project_part1;
+package project_part3;
 
-public class MessageHendl {
+import project_part1.Person;
+
+public interface MessageHandler {
+
+    void handleMessage(Person.Message message);
+
 }
