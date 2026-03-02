@@ -4,6 +4,6 @@ import project_part2.Day;
 
 public interface AdviseDay {
 
-    void generateAdvise(Day);
+    void generateAdvise(Day day);
 
 }

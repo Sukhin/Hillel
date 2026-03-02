@@ -1,9 +1,13 @@
 package project_part2;
 
-import project_part1.Person;
+public enum Day {
 
-public interface Printer {
-
-    void print(Person.Message message);
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
 
 }
