@@ -1,80 +1,22 @@
 package project_part1;
 
+import project_part2.Day;
+
+import project_part3.AdviseDay;
+
 import java.util.Scanner;
 
 import java.util.Locale;
 
-import project_part2.Printer;
-
-import project_part3.MessageHandler;
-
-public class Person implements Printer {
+public class WeekAdvisor implements AdviseDay {
 
     public static int numberUsers;
     public static String nameSender;
     public static String textSender;
 
-    public static class Message {
-
-        private String text;
-        private String sender;
-
-        public Message(String text, String sender) {
-
-            this.text = text;
-            this.sender = sender;
-
-        }
-
-        public void setText(String text) {
-
-            this.text = text;
-
-        }
-
-        public void setSender(String sender) {
-
-            this.sender = sender;
-
-        }
-
-        public String getText() {
-
-            return text;
-
-        }
-
-        public String getSender() {
-
-            return sender;
-
-        }
-
-    }
-
     @Override
-    public void print(Message message) {
+    public void generateAdvise() {
 
-        String text = message.getText();
-        String sender = message.getSender();
-
-        if ((text == null || text.isEmpty()) && (sender == null || sender.isEmpty())) {
-
-            MessageHandler handler = (msg) ->
-
-            System.out.println("Processing the empty message from anonymous user!");
-
-            handler.handleMessage(message);
-
-        } else if (sender != null && !sender.isEmpty()) {
-
-            System.out.println("User " + sender + " sends the message: " + text);
-
-        } else {
-
-            System.out.println("Anonymous user sends the message: " + text);
-
-        }
 
     }
 
